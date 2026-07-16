@@ -1,0 +1,17 @@
+{
+  "name": "gd-market-crawler",
+  "version": "0.1.0",
+  "private": true,
+  "description": "广东交易中心本地原始 Excel 获取工具",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "web": "node src/index.js web",
+    "list": "node src/index.js list-tasks",
+    "click-day-ahead-basic": "node src/index.js click-day-ahead-basic",
+    "check": "node --check src/index.js && node --check src/config.js && node --check src/logger.js && node --check src/client/gd-market-client.js && node --check src/auth/ukey-login-provider.js && node --check src/browser/cdp.js && node --check src/browser/date-picker.js && node --check src/browser/excel-content-validator.js && node --check src/browser/download-validator.js && node --check src/browser/generic-click-downloader.js && node --check src/browser/day-ahead-basic-click-downloader.js && node --check src/browser/click-task-catalog.js && node --check src/browser/click-runner.js && node --check src/web/server.js && node --check src/web/public/app.js && node --check src/tasks/catalog.js && node --check src/tasks/task-runner.js && node --check src/storage/local-file-store.js && node --check src/storage/data-inventory.js && node --check src/scheduler/simple-scheduler.js && node --check src/utils/date.js"
+  }
+}

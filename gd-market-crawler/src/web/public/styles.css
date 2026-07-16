@@ -1,0 +1,417 @@
+:root {
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --ink: #172033;
+  --muted: #667085;
+  --line: #d9e1ec;
+  --blue: #1b6ef3;
+  --green: #147d4f;
+  --amber: #a46000;
+  --red: #c7362f;
+  --shadow: 0 10px 30px rgba(28, 39, 60, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: minmax(360px, 520px) minmax(520px, 1fr);
+  gap: 18px;
+  min-height: 100vh;
+  padding: 18px;
+}
+
+.control,
+.status {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.brand,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+h2 {
+  font-size: 15px;
+}
+
+p {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.panel {
+  padding: 16px;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.date-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+input[type="date"] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0 10px;
+  font-size: 14px;
+  color: var(--ink);
+  background: #fff;
+}
+
+.option-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  align-items: start;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fbfcff;
+}
+
+.option input {
+  margin-top: 3px;
+}
+
+.option strong {
+  display: block;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.option small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.inline-actions {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  height: 34px;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--blue);
+}
+
+.run-actions {
+  display: grid;
+  grid-template-columns: 1fr 140px 120px;
+  gap: 10px;
+}
+
+.run-button,
+.audit-button,
+.stop-button {
+  height: 46px;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+}
+
+.run-button {
+  background: var(--blue);
+}
+
+.audit-button {
+  background: var(--green);
+}
+
+.stop-button {
+  background: var(--red);
+}
+
+.run-button:disabled,
+.audit-button:disabled {
+  background: #9eb8e4;
+  cursor: not-allowed;
+}
+
+.stop-button:disabled {
+  background: #d9a4a0;
+  cursor: not-allowed;
+}
+
+.task-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.task {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: start;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px;
+  background: #fbfcff;
+}
+
+.task input {
+  margin-top: 3px;
+}
+
+.task-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.task-desc {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 68px;
+  height: 26px;
+  border-radius: 999px;
+  padding: 0 10px;
+  background: #e9f2ff;
+  color: var(--blue);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.badge.ready {
+  background: #e8f7ef;
+  color: var(--green);
+}
+
+.badge.pending {
+  background: #fff4df;
+  color: var(--amber);
+}
+
+.badge.muted {
+  background: #eef1f5;
+  color: var(--muted);
+}
+
+.status-panel {
+  min-height: 420px;
+}
+
+.log {
+  height: 350px;
+  margin-top: 14px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0f172a;
+  color: #d9e7ff;
+  padding: 12px;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.log-line {
+  margin-bottom: 6px;
+}
+
+.log-line.completed {
+  color: #9ce0bc;
+}
+
+.log-line.failed {
+  color: #ffb4ae;
+}
+
+.log-line.cancelled {
+  color: #ffcf99;
+}
+
+.log-line.skipped {
+  color: #ffd58a;
+}
+
+.files {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.files.empty {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.file {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fbfcff;
+  word-break: break-all;
+}
+
+.file-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.file-path {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.audit-summary {
+  margin-top: 14px;
+}
+
+.audit-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.audit-metrics span {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #fbfcff;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.audit-metrics strong {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.audit-root {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.audit-results {
+  display: grid;
+  gap: 8px;
+  max-height: 360px;
+  margin-top: 14px;
+  overflow: auto;
+}
+
+.audit-results.empty {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.audit-item {
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  border-radius: 6px;
+  padding: 9px 10px;
+  background: #fbfcff;
+  font-size: 13px;
+}
+
+.audit-item.missing {
+  border-left-color: var(--red);
+}
+
+.audit-item.unsupported {
+  border-left-color: var(--amber);
+}
+
+.audit-path {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  word-break: break-all;
+}
+
+@media (max-width: 980px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .date-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .run-actions {
+    grid-template-columns: 1fr;
+  }
+}

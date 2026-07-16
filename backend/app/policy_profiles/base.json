@@ -1,0 +1,42 @@
+{
+  "name": "base",
+  "description": "通用规则类文件解读模板，适用于政策、通知、实施细则、交易规则、结算规则等场景的基础解读。",
+  "match": {
+    "title_keywords": [],
+    "issuer_keywords": [],
+    "region_keywords": [],
+    "content_keywords": ["电力市场", "规则", "通知", "细则", "交易", "结算", "实施方案"]
+  },
+  "constraints": {
+    "focus_topics": [
+      "文件类型与生效层级",
+      "适用主体与适用场景",
+      "交易方式与执行要求",
+      "结算考核与风险控制",
+      "关键参数与时间节点"
+    ],
+    "allowed_impact_tags": [
+      "现货交易",
+      "中长期交易",
+      "新能源",
+      "申报要求",
+      "结算考核",
+      "市场准入",
+      "调度运行",
+      "用户侧"
+    ],
+    "required_evidence_count": 2,
+    "forbidden": [
+      "不得将征求意见稿、原则性表述或方向性文件写成正式生效规则",
+      "不得补充原文未明确的价格公式、结算口径、偏差算法或执行阈值",
+      "不得把倡议、建议或原则要求扩写成已经落地的操作细则",
+      "不得忽略适用对象、适用区域或生效条件直接下结论"
+    ],
+    "fields": {
+      "summary": { "max_chars": 120 },
+      "scope_summary": { "max_chars": 100 },
+      "impact_summary": { "max_chars": 180 },
+      "key_points": { "min_items": 4, "max_items": 6, "max_chars": 90 }
+    }
+  }
+}

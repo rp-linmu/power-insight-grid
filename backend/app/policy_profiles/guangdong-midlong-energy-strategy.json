@@ -1,0 +1,32 @@
+{
+  "name": "guangdong-midlong-energy-strategy",
+  "description": "广东电力市场中长期电能量交易实施细则的交易策略型解读模板，面向售电公司、新能源主体和发电企业，重点抽取合约、曲线、电量约束、价格机制和交易组织影响。",
+  "match": {
+    "title_keywords": ["广东", "中长期", "电能量", "实施细则"],
+    "issuer_keywords": ["广东", "交易中心"],
+    "region_keywords": ["广东"],
+    "content_keywords": ["中长期电能量交易", "交易品种", "合约要素", "分解曲线", "交易价格机制", "交易电量约束", "双边协商", "挂牌交易", "集中竞争"]
+  },
+  "constraints": {
+    "analysis_focus": "strategy",
+    "target_subjects": ["售电公司", "新能源主体", "发电企业"],
+    "required_structured_fields": ["subject_impacts", "responsibility_matrix", "time_nodes", "risk_points", "action_suggestions"],
+    "required_structured_min_count": 1,
+    "focus_topics": ["交易品种", "交易方式", "合约要素", "分解曲线", "交易价格机制", "交易电量约束", "批发与零售衔接", "交易校核与结果发布"],
+    "allowed_impact_tags": ["中长期交易", "新能源", "申报要求", "结算考核", "市场准入", "用户侧", "交易策略", "合约曲线", "电量约束"],
+    "required_evidence_count": 3,
+    "forbidden": [
+      "不得把中长期交易规则误写成现货出清或现货结算规则",
+      "不得混淆年度、多月、月度、月内、多日等交易组织周期",
+      "不得补充原文未明确的合约分解公式、价格上下限或电量约束阈值",
+      "不得把交易校核要求直接改写成收益承诺或确定性交易建议",
+      "不得忽略售电公司、新能源主体和发电企业之间的适用差异"
+    ],
+    "fields": {
+      "summary": { "max_chars": 140 },
+      "scope_summary": { "max_chars": 120 },
+      "impact_summary": { "max_chars": 220 },
+      "key_points": { "min_items": 4, "max_items": 7, "max_chars": 110 }
+    }
+  }
+}

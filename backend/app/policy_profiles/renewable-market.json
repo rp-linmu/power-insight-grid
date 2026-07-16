@@ -1,0 +1,26 @@
+{
+  "name": "renewable-market",
+  "description": "Profile for renewable integration, green power trading, and new energy participation in electricity markets.",
+  "match": {
+    "title_keywords": ["新能源", "绿电", "风电", "光伏"],
+    "issuer_keywords": ["能源局"],
+    "region_keywords": ["广东", "南方区域"],
+    "content_keywords": ["新能源", "绿电", "上网电量", "风电", "光伏", "中长期", "现货"]
+  },
+  "constraints": {
+    "focus_topics": ["新能源入市", "中长期交易", "现货衔接", "绿电结算", "偏差分担"],
+    "allowed_impact_tags": ["现货交易", "中长期交易", "新能源", "申报要求", "结算考核", "市场准入", "用户侧"],
+    "required_evidence_count": 2,
+    "forbidden": [
+      "不得默认全部新能源主体执行同一交易方式",
+      "不得将鼓励性表述误写成强制性考核要求",
+      "不得补充原文没有明确写出的绿证、补贴或价格机制"
+    ],
+    "fields": {
+      "summary": { "max_chars": 120 },
+      "scope_summary": { "max_chars": 100 },
+      "impact_summary": { "max_chars": 160 },
+      "key_points": { "min_items": 4, "max_items": 5, "max_chars": 90 }
+    }
+  }
+}

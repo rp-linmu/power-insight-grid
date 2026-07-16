@@ -1,0 +1,32 @@
+{
+  "name": "guangdong-spot-energy-strategy",
+  "description": "广东电力市场现货电能量交易实施细则的交易策略型解读模板，面向售电公司、新能源主体和发电企业，重点抽取日前/实时交易组织、申报、出清、定价和结果发布影响。",
+  "match": {
+    "title_keywords": ["广东", "现货电能量", "交易实施细则"],
+    "issuer_keywords": ["广东", "交易中心"],
+    "region_keywords": ["广东"],
+    "content_keywords": ["日前电能量市场交易组织", "实时电能量市场交易组织", "交易申报", "市场出清", "节点电价", "LMP", "交易结果发布", "新能源交易单元"]
+  },
+  "constraints": {
+    "analysis_focus": "strategy",
+    "target_subjects": ["售电公司", "新能源主体", "发电企业"],
+    "required_structured_fields": ["subject_impacts", "responsibility_matrix", "time_nodes", "risk_points", "action_suggestions"],
+    "required_structured_min_count": 1,
+    "focus_topics": ["交易时间定义", "机组参数", "运行边界条件", "用户申报信息", "新能源交易单元申报", "日前出清模型", "实时出清机制", "节点电价与稀缺定价", "交易结果发布"],
+    "allowed_impact_tags": ["现货交易", "新能源", "申报要求", "结算考核", "市场准入", "调度运行", "用户侧", "交易策略", "出清定价", "运行约束"],
+    "required_evidence_count": 3,
+    "forbidden": [
+      "不得臆测未写明的节点电价公式、SCUC/SCED目标函数或稀缺定价阈值",
+      "不得把现货交易申报规则误写成中长期合约规则",
+      "不得忽略售电公司、新能源主体和发电企业在申报、出清、结果发布中的不同责任",
+      "不得把调度运行约束扩写成确定性收益判断",
+      "不得补充原文没有明确写出的报价上下限、缺省申报参数或出清优先级"
+    ],
+    "fields": {
+      "summary": { "max_chars": 140 },
+      "scope_summary": { "max_chars": 120 },
+      "impact_summary": { "max_chars": 220 },
+      "key_points": { "min_items": 4, "max_items": 7, "max_chars": 110 }
+    }
+  }
+}

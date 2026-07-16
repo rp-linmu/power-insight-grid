@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>广东交易中心模拟点击控制台</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <section class="control">
+        <div class="brand">
+          <div>
+            <h1>广东交易中心模拟点击控制台</h1>
+            <p>连接已登录 Chrome，按日期范围在交易中心页面中选择、点击并下载原始 Excel。</p>
+          </div>
+          <span id="chromeState" class="badge">Chrome 9222</span>
+        </div>
+
+        <div class="panel">
+          <h2>运行范围</h2>
+          <div class="date-grid">
+            <label>
+              开始日期
+              <input id="startDate" type="date">
+            </label>
+            <label>
+              结束日期
+              <input id="endDate" type="date">
+            </label>
+          </div>
+          <div class="option-list">
+            <label class="option">
+              <input id="supplementMode" type="checkbox" checked>
+              <span>
+                <strong>补充获取</strong>
+                <small>已存在 Excel 的数据项会跳过，只重跑缺失或失败项</small>
+              </span>
+            </label>
+            <label class="option">
+              <input id="overwriteMode" type="checkbox">
+              <span>
+                <strong>覆盖已有数据</strong>
+                <small>下载前清理对应目录旧 Excel，重新生成结果文件</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>数据项</h2>
+            <div class="inline-actions">
+              <button id="selectReady" type="button">选择已接入</button>
+              <button id="selectAll" type="button">全选</button>
+            </div>
+          </div>
+          <div id="taskList" class="task-list"></div>
+        </div>
+
+        <div class="run-actions">
+          <button id="runButton" class="run-button" type="button">开始模拟点击运行</button>
+          <button id="auditButton" class="audit-button" type="button">检查缺失数据</button>
+          <button id="stopButton" class="stop-button" type="button" disabled>中断执行</button>
+        </div>
+      </section>
+
+      <section class="status">
+        <div class="panel status-panel">
+          <div class="panel-head">
+            <h2>执行状态</h2>
+            <span id="jobState" class="badge muted">未开始</span>
+          </div>
+          <div id="log" class="log"></div>
+        </div>
+
+        <div class="panel">
+          <h2>下载结果</h2>
+          <div id="files" class="files empty">暂无下载文件</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>数据完整性检查</h2>
+            <span id="auditState" class="badge muted">未检查</span>
+          </div>
+          <div id="auditSummary" class="audit-summary muted">选择日期范围和数据项后，点击“检查缺失数据”。</div>
+          <div id="auditResults" class="audit-results empty">暂无检查结果</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "name": "guangdong-spot-settlement-strategy",
+  "description": "广东电力现货市场结算实施细则的交易策略型解读模板，面向售电公司、新能源主体和发电企业，重点抽取结算公式、费用项、责任主体、结算流程、返还分摊和退补管理。",
+  "match": {
+    "title_keywords": ["广东", "现货市场", "结算实施细则"],
+    "issuer_keywords": ["广东", "交易中心"],
+    "region_keywords": ["广东"],
+    "content_keywords": ["市场结算主要权责", "结算原则", "结算流程", "批发市场结算", "电力用户结算", "返还及分摊电费", "退补管理", "辅助服务结算", "电费结算流程"]
+  },
+  "constraints": {
+    "analysis_focus": "strategy",
+    "target_subjects": ["售电公司", "新能源主体", "发电企业"],
+    "required_structured_fields": ["subject_impacts", "responsibility_matrix", "time_nodes", "risk_points", "action_suggestions"],
+    "required_structured_min_count": 1,
+    "focus_topics": ["市场结算主要权责", "结算原则", "结算流程", "批发市场结算", "电力用户结算", "返还及分摊电费", "退补管理", "辅助服务结算", "电费结算流程"],
+    "allowed_impact_tags": ["现货交易", "新能源", "结算考核", "用户侧", "交易策略", "费用分摊", "退补管理", "责任主体", "时间节点"],
+    "required_evidence_count": 3,
+    "forbidden": [
+      "不得补充原文未明确的结算公式、费用分摊比例、价差计算口径或退补条件",
+      "不得把批发市场结算、电力用户结算和零售结算混为同一口径",
+      "不得忽略交易中心、电网企业、售电公司、发电侧主体等责任主体差异",
+      "不得把费用承担或返还方向写反",
+      "不得把交易组织时间节点误写为结算出账或退补时间节点"
+    ],
+    "fields": {
+      "summary": { "max_chars": 140 },
+      "scope_summary": { "max_chars": 120 },
+      "impact_summary": { "max_chars": 240 },
+      "key_points": { "min_items": 4, "max_items": 8, "max_chars": 120 }
+    }
+  }
+}

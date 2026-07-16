@@ -1,0 +1,26 @@
+{
+  "name": "guangdong-spot",
+  "description": "Profile for Guangdong spot market rules, implementation rules, and market operation notices.",
+  "match": {
+    "title_keywords": ["广东", "现货", "规则", "细则"],
+    "issuer_keywords": ["广东", "交易中心"],
+    "region_keywords": ["广东"],
+    "content_keywords": ["日前", "实时", "出清", "结算", "偏差", "报量报价"]
+  },
+  "constraints": {
+    "focus_topics": ["市场准入", "报量报价", "出清机制", "结算考核", "偏差责任"],
+    "allowed_impact_tags": ["现货交易", "申报要求", "结算考核", "市场准入", "调度运行", "用户侧"],
+    "required_evidence_count": 2,
+    "forbidden": [
+      "不得臆测未写明的节点电价、统一出清公式或偏差费用算法",
+      "不得忽略文件是否仅适用于广东省内市场主体",
+      "不得把原则性表述扩写成已经执行的操作细则"
+    ],
+    "fields": {
+      "summary": { "max_chars": 110 },
+      "scope_summary": { "max_chars": 90 },
+      "impact_summary": { "max_chars": 150 },
+      "key_points": { "min_items": 3, "max_items": 5, "max_chars": 85 }
+    }
+  }
+}

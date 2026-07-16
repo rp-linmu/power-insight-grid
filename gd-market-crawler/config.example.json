@@ -1,0 +1,50 @@
+{
+  "market": {
+    "baseUrl": "https://pm.gd.csg.cn",
+    "publicEntryUrl": "https://pm.gd.csg.cn/pfxh/stc",
+    "requestTimeoutMs": 120000,
+    "minIntervalMs": 1000,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36",
+    "defaultHeaders": {
+      "Accept": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,*/*",
+      "Referer": "https://pm.gd.csg.cn/pfxh/stc"
+    }
+  },
+  "auth": {
+    "mode": "ukey-browser-session",
+    "chromeDebugUrl": "http://127.0.0.1:9222",
+    "cookieHeader": "",
+    "ticket": "",
+    "clientTag": "",
+    "extraHeaders": {}
+  },
+  "output": {
+    "rootDir": "./data",
+    "preserveOriginalFilename": true
+  },
+  "tasks": {
+    "enabled": ["all"],
+    "endpoints": {
+      "market_overview": {
+        "method": "GET",
+        "path": "/pfxh/qctc-pm-trade-market-out-plzx/DaMarkjsc/exportHomeCq",
+        "params": {
+          "dataDate": "{{date}}"
+        }
+      }
+    }
+  },
+  "schedule": {
+    "enabled": false,
+    "runs": [
+      {
+        "name": "daily-yesterday",
+        "time": "02:30",
+        "dateRange": {
+          "mode": "yesterday"
+        },
+        "tasks": ["all"]
+      }
+    ]
+  }
+}

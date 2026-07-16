@@ -1,0 +1,51 @@
+﻿# Environment and secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+config.local.json
+
+# Databases and private data
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+data/
+uploads/
+outputs/
+data_samples/
+backend/backups/
+
+# Logs and runtime state
+*.log
+logs/
+runtime_logs/
+backend/logs/
+gd-market-crawler/logs/
+gd-market-crawler/downloads/
+gd-market-crawler/browser-data/
+gd-market-crawler/session/
+gd-market-crawler/.auth/
+
+# Generated model / private algorithm artifacts
+forecast_runs/
+contract_curve_optimizer/
+out_rtload_plus_spread_v12/
+*.pkl
+*.joblib
+
+# Build and cache
+frontend/.next/
+frontend/node_modules/
+frontend/tsconfig.tsbuildinfo
+node_modules/
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Local agent/workspace files
+.agents/
+.codex/
