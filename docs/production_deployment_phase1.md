@@ -100,7 +100,7 @@ sudo systemctl start docker
 - `deploy/certs/fullchain.pem`
 - `deploy/certs/privkey.pem`
 
-你可以：
+证书配置可采用以下方式：
 
 - 先用正式证书
 - 或先放测试证书验证联通
@@ -127,7 +127,7 @@ docker compose -f docker-compose.prod.yml logs -f frontend
 
 浏览器访问：
 
-- `https://你的域名`
+- `https://<domain>`
 
 ## 安全加固建议
 
@@ -150,7 +150,7 @@ docker compose -f docker-compose.prod.yml logs -f frontend
 
 ### 应用层
 
-建议你上线前确认：
+上线前建议确认：
 
 - 导入管理仅 `admin` 可访问
 - 用户管理仅 `admin` 可访问

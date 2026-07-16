@@ -1,15 +1,52 @@
-﻿# Open Source Release Notes
+# 公开版本说明
 
-This folder is a sanitized source package for publishing.
+Power Insight Grid 公开版本提供系统通用框架、前后端页面、数据导入接口、网架拓扑展示、政策文件管理和数据获取控制服务示例。
 
-Excluded from this release:
+## 1. 包含内容
 
-- Private short-term spread forecasting package.
-- Private mid/long-term adjustment and forecasting packages.
-- Real databases, backups, logs, crawler downloads, browser sessions, and generated outputs.
-- Local-only config files such as `.env`, `.env.local`, and `gd-market-crawler/config.local.json`.
-- Real market data, model artifacts, and private Excel/CSV files.
+公开版本包含：
 
-Before publishing, review the working tree for credentials, private local paths, databases, spreadsheets, logs, model artifacts, browser sessions, and generated output files.
+- 前端页面代码。
+- 后端 API 服务代码。
+- 本地 SQLite 数据访问和导入逻辑。
+- 数据获取控制服务框架。
+- 现货市场、基本面、市场出清、网架拓扑、政策文件和导入管理等页面。
+- 本地启动脚本和部署示例。
+- 使用说明和功能文档。
 
-If any real key was ever committed to a Git history, rotate the key immediately and clean Git history before publishing.
+## 2. 不包含内容
+
+公开版本不包含：
+
+- 真实市场数据。
+- 真实数据库、备份文件和日志。
+- 浏览器登录会话、Cookie、UKey 信息和本地账号配置。
+- 私有短期价差预测算法。
+- 私有中长期价格预测、合约曲线优化和调整算法。
+- 真实网架文件、私有业务文件和未脱敏 Excel / CSV 文件。
+- 模型产物、训练结果和业务输出结果。
+
+## 3. 数据使用说明
+
+系统可以在无真实数据的情况下启动。没有导入数据时，部分页面会显示空态或暂无数据提示。
+
+如需体验完整页面效果，可使用脱敏后的演示数据或自行准备符合导入格式的数据文件。
+
+## 4. 安全说明
+
+本项目不提供任何真实密钥、登录凭据或市场数据访问权限。
+
+二次开发和部署时，应将本地配置、账号信息、数据库、下载文件和模型产物保存在本地环境中，不应提交到公开仓库。
+
+## 5. 二次开发建议
+
+建议优先从以下方向扩展：
+
+- 增加新的数据导入适配器。
+- 接入新的市场数据源。
+- 扩展基本面和出清数据图表。
+- 接入本地预测模型。
+- 增强网架拓扑阻塞识别逻辑。
+- 增加生产环境部署配置。
+
+扩展功能时，应保持数据、配置和算法模块之间的边界清晰，避免将私有数据或密钥写入源码。

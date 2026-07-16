@@ -1,8 +1,8 @@
 # Power Insight Grid
 
-Power Insight Grid is a local power-market decision support system. This open-source package keeps the general portal, data acquisition bridge, disclosure/clearing views, topology analysis, policy workspace, and import management code.
+Power Insight Grid is a local power-market decision support system. It provides a general portal, data acquisition bridge, disclosure and clearing views, topology analysis, policy workspace, and import management code.
 
-This package intentionally excludes private algorithm modules:
+The public repository does not include private algorithm modules or real operating data:
 
 - Short-term spread forecasting package.
 - Mid/long-term price forecast and contract adjustment algorithms.
@@ -62,9 +62,9 @@ Stop services:
 
 ## Security Notes
 
-Do not commit real `.env` files, crawler login configuration, downloaded market data, SQLite databases, model outputs, or logs.
+Local `.env` files, crawler login configuration, downloaded market data, SQLite databases, model outputs, and logs should remain outside Git.
 
-Before publishing your fork, run the checks listed in `OPEN_SOURCE_NOTES.md`.
+See `OPEN_SOURCE_NOTES.md` for the public-version scope and data boundary.
 
 ## Documentation
 
