@@ -1,218 +1,227 @@
-﻿# 瀹夎涓庝娇鐢ㄦ寚鍗?
-鏈枃妗ｈ鏄庡浣曞湪鏈湴瀹夎銆佸惎鍔ㄥ拰妫€鏌?Power Insight Grid 寮€婧愭暣鐞嗙増銆?
-## 1. 椤圭洰璇存槑
+# 安装与使用指南
 
-Power Insight Grid 鏄竴涓潰鍚戠數鍔涘競鍦烘暟鎹睍绀恒€佷俊鎭姭闇插垎鏋愩€佸競鍦哄嚭娓呮煡鐪嬨€佺綉鏋舵嫇鎵戦樆濉炶瘑鍒€佹斂绛栨枃浠剁鐞嗗拰鏁版嵁瀵煎叆绠＄悊鐨勬湰鍦拌緟鍔╁喅绛栫郴缁熴€?
-鏈紑婧愭暣鐞嗙増涓嶅寘鍚細
+本文档说明如何在本地安装、启动和检查 Power Insight Grid 开源整理版。
 
-- 鐪熷疄甯傚満鏁版嵁銆佹暟鎹簱銆佹棩蹇椼€佹祻瑙堝櫒浼氳瘽鍜屾湰鍦拌处鍙烽厤缃€?- 绉佹湁鐭湡浠峰樊棰勬祴绠楁硶銆?- 绉佹湁涓暱鏈熶环鏍奸娴嬨€佸悎绾︽洸绾夸紭鍖栧拰璋冩暣绠楁硶銆?- 浠讳綍鐪熷疄 API Key銆丆ookie銆乁Key 浼氳瘽淇℃伅銆?
-## 2. 鐜瑕佹眰
+## 1. 项目说明
 
-寤鸿鐜锛?
+Power Insight Grid 是一个面向电力市场数据展示、信息披露分析、市场出清查看、网架拓扑阻塞识别、政策文件管理和数据导入管理的本地辅助决策系统。
+
+本开源整理版不包含：
+
+- 真实市场数据、数据库、日志、浏览器会话和本地账号配置。
+- 私有短期价差预测算法。
+- 私有中长期价格预测、合约曲线优化和调整算法。
+- 任何真实 API Key、Cookie 或 UKey 会话信息。
+
+## 2. 环境要求
+
+建议环境：
+
 - Windows 10/11
-- Python 3.10 鎴栨洿楂樼増鏈?- Node.js 20 鎴栨洿楂樼増鏈?- npm
+- Python 3.10 或更高版本
+- Node.js 20 或更高版本
+- npm
 
-椤圭洰鍖呭惈涓変釜涓昏杩愯閮ㄥ垎锛?
-- 鍚庣 API锛歚backend`
-- 鍓嶇椤甸潰锛歚frontend`
-- 鏁版嵁鑾峰彇鎺у埗鏈嶅姟锛歚gd-market-crawler`
+项目包含三个主要运行部分：
 
-## 3. 鑾峰彇浠ｇ爜
+- 后端 API：`backend`
+- 前端页面：`frontend`
+- 数据获取控制服务：`gd-market-crawler`
 
-浠?GitHub 鍏嬮殕浠ｇ爜鍚庤繘鍏ラ」鐩洰褰曪細
+## 3. 获取代码
 
 ```powershell
-git clone <your-repository-url>
-cd <your-repository-folder>
+git clone https://github.com/rp-linmu/power-insight-grid.git
+cd power-insight-grid
 ```
 
-濡傛灉浣犳槸鍦ㄦ湰鍦版暣鐞嗙洰褰曚腑娴嬭瘯锛?
-```powershell
-cd open_source_release
-```
+如果你使用自己的仓库地址，请替换上面的 URL。
 
-## 4. 閰嶇疆鐜鍙橀噺
+## 4. 配置环境变量
 
-澶嶅埗绀轰緥閰嶇疆锛?
+复制示例配置：
+
 ```powershell
 Copy-Item .env.example .env
 ```
 
-榛樿鎯呭喌涓嬬郴缁熷彲浠ヤ笉閰嶇疆澶фā鍨?API Key 鍚姩銆傝嫢闇€瑕佸惎鐢ㄦ斂绛栨枃浠?AI 瑙ｈ锛屽彲鍦?`.env` 鎴栫郴缁熺幆澧冨彉閲忎腑閰嶇疆锛?
-```env
-POLICY_LLM_API_KEY=
-POLICY_LLM_BASE_URL=https://api.openai.com/v1
-POLICY_LLM_MODEL=
-POLICY_LLM_TIMEOUT=60
-```
+然后根据本地情况修改 `.env`。
 
-娉ㄦ剰锛?
-- 涓嶈鎻愪氦鐪熷疄 `.env` 鏂囦欢銆?- 涓嶈鎻愪氦鐪熷疄 API Key銆?- 涓嶈鎻愪氦 `gd-market-crawler/config.local.json`銆?
-## 5. 瀹夎鍚庣渚濊禆
+注意：
 
-杩涘叆鍚庣鐩綍锛?
+- `.env` 不应提交到 Git。
+- 不要在 `.env.example` 中写入真实密钥。
+- 如需使用外部模型或第三方服务，请只在本地 `.env` 中配置密钥。
+
+## 5. 安装后端依赖
+
 ```powershell
 cd backend
 python -m pip install -r requirements.txt
-```
-
-濡傛灉浣犵殑 Python 涓嶅湪 PATH 涓紝鍙互浣跨敤瀹屾暣璺緞锛?
-```powershell
-C:\path\to\python.exe -m pip install -r requirements.txt
-```
-
-## 6. 瀹夎鍓嶇渚濊禆
-
-杩涘叆鍓嶇鐩綍锛?
-```powershell
-cd ..\frontend
-npm install
-```
-
-## 7. 瀵煎叆婕旂ず鏁版嵁
-
-寮€婧愬寘涓嶅寘鍚湡瀹炴暟鎹€備负浜嗘鏌ラ〉闈㈡槸鍚﹁兘姝ｅ父灞曠ず锛屽彲浠ュ鍏ュ唴缃殑鑴辨晱婕旂ず鏁版嵁锛?
-```powershell
-cd ..\backend
-python .\scripts\load_demo_day.py --date 2026-07-01
-```
-
-涔熷彲浠ヨ繛缁鍏ュ澶╋細
-
-```powershell
-python .\scripts\load_demo_day.py --date 2026-07-01
-python .\scripts\load_demo_day.py --date 2026-07-02
-python .\scripts\load_demo_day.py --date 2026-07-03
-```
-
-瀵煎叆鍚庝細鍦ㄦ湰鍦扮敓鎴?SQLite 鏁版嵁搴撱€傝鏁版嵁搴撳睘浜庤繍琛屼骇鐗╋紝涓嶅簲鎻愪氦鍒?GitHub銆?
-## 8. 鍚姩绯荤粺
-
-鍥炲埌椤圭洰鏍圭洰褰曪細
-
-```powershell
 cd ..
 ```
 
-鐩存帴鍚姩锛?
+如果你使用 Anaconda，可以指定 Python：
+
 ```powershell
-.\start.bat
+& "C:\software\anaconda\python.exe" -m pip install -r backend\requirements.txt
 ```
 
-鎴栦娇鐢?PowerShell 鍚姩锛?
-```powershell
-powershell.exe -ExecutionPolicy Bypass -File .\start.ps1
-```
-
-濡傛灉闇€瑕佹寚瀹?Python 璺緞锛?
-```powershell
-$env:PYTHON_EXE = "C:\path\to\python.exe"
-.\start.ps1
-```
-
-鍚姩鍚庤闂細
-
-- 鍓嶇椤甸潰锛歨ttp://127.0.0.1:3000
-- 鍚庣 API锛歨ttp://127.0.0.1:8001
-- 鏁版嵁鑾峰彇鎺у埗鏈嶅姟锛歨ttp://127.0.0.1:8787
-
-璇存槑锛?
-- 濡傛灉 `frontend/node_modules` 涓嶅瓨鍦紝鍚姩鑴氭湰浼氭彁绀哄厛鎵ц `npm install`銆?- 濡傛灉 `gd-market-crawler/config.local.json` 涓嶅瓨鍦紝鐖櫕鏈嶅姟浼氳嚜鍔ㄨ烦杩囷紝杩欐槸姝ｅ父琛屼负銆?
-## 9. 鍋滄绯荤粺
-
-鍦ㄩ」鐩牴鐩綍鎵ц锛?
-```powershell
-.\stop.ps1
-```
-
-## 10. 鏁版嵁鑾峰彇宸ュ叿閰嶇疆
-
-鏁版嵁鑾峰彇宸ュ叿浣嶄簬锛?
-```text
-gd-market-crawler
-```
-
-澶嶅埗閰嶇疆妯℃澘锛?
-```powershell
-cd gd-market-crawler
-Copy-Item .\config.example.json .\config.local.json
-```
-
-鐒跺悗鏍规嵁鏈湴鐜濉啓 `config.local.json`銆?
-娉ㄦ剰锛?
-- `config.local.json` 鍙兘鍖呭惈 UKey 鐧诲綍鍚庣殑 Cookie 鎴栦細璇濅俊鎭€?- 璇ユ枃浠跺凡缁忚 `.gitignore` 鎺掗櫎銆?- 涓嶈灏嗚鏂囦欢涓婁紶鍒?GitHub銆?
-鍗曠嫭鍚姩鏁版嵁鑾峰彇鎺у埗鏈嶅姟锛?
-```powershell
-node .\src\index.js web --config .\config.local.json --port 8787
-```
-
-## 11. 椤甸潰鍔熻兘妫€鏌ュ缓璁?
-棣栨鍚姩鍚庡缓璁寜浠ヤ笅椤哄簭妫€鏌ワ細
-
-1. 棣栭〉  
-   妫€鏌ヤ氦鏄撴棩鐘舵€併€侀闄╂彁绀恒€佸叧閿寚鏍囨槸鍚﹀姞杞姐€?
-2. 鐜拌揣妯″潡  
-   妫€鏌ュ熀鏈潰鏁版嵁銆佸競鍦哄嚭娓呫€佸垎鏃剁數閲忋€佽繍琛屼笌妫€淇〉闈㈡槸鍚﹀彲鎵撳紑銆?
-3. 缃戞灦鎷撴墤  
-   妫€鏌ユ嫇鎵戦〉闈€佹椂鍒绘粦鍧椼€佺嚎璺樆濉炶瘑鍒粨鏋滄槸鍚﹀睍绀恒€?
-4. 鏁版嵁鑾峰彇  
-   妫€鏌ユ暟鎹幏鍙栭〉闈㈡槸鍚﹁兘鎵撳紑銆傛湭閰嶇疆鐖櫕鏃讹紝鏈嶅姟鏈繛鎺ュ睘浜庢甯哥姸鎬併€?
-5. 瀵煎叆绠＄悊  
-   妫€鏌ュ鍏ョ洰鏍囥€佺増鏈垪琛ㄥ拰鍚屾鍏ュ彛鏄惁鍙敤銆?
-6. 鏀跨瓥鏂囦欢  
-   妫€鏌ユ斂绛栨枃浠跺垪琛ㄥ拰瑙勫垯瑙ｆ瀽鍔熻兘銆傛湭閰嶇疆澶фā鍨?API Key 鏃讹紝AI 瑙ｈ涓嶅彲鐢ㄥ睘浜庢甯哥姸鎬併€?
-7. 涓暱鏈熸ā鍧? 
-   寮€婧愮増浠呬繚鐣欏崰浣嶉〉闈紝涓嶅寘鍚鏈変腑闀挎湡棰勬祴鎴栧悎绾︽洸绾跨畻娉曘€?
-## 12. 甯歌闂
-
-### 12.1 鍓嶇椤甸潰鎵撲笉寮€
-
-妫€鏌ュ墠绔緷璧栨槸鍚﹀畨瑁咃細
+## 6. 安装前端依赖
 
 ```powershell
 cd frontend
 npm install
+cd ..
+```
+
+## 7. 导入演示数据
+
+开源版默认不包含真实数据库。你可以使用脱敏样例文件或自行准备数据文件。
+
+如果仓库提供了演示导入脚本，可按脚本说明执行。例如：
+
+```powershell
+cd backend
+python scripts\import_demo_data.py
+cd ..
+```
+
+如果没有演示文件，页面会正常启动，但部分模块会显示“暂无数据”。
+
+## 8. 启动系统
+
+推荐使用根目录启动脚本：
+
+```powershell
+.\start.ps1
+```
+
+启动后通常访问：
+
+```text
+http://127.0.0.1:3000
+```
+
+如果端口被占用，可分别启动后端和前端。
+
+### 单独启动后端
+
+```powershell
+cd backend
+python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+### 单独启动前端
+
+```powershell
+cd frontend
 npm run dev
 ```
 
-### 12.2 鍚庣鎺ュ彛涓嶅彲鐢?
-妫€鏌ュ悗绔槸鍚﹀惎鍔細
+## 9. 停止系统
 
-```powershell
-cd backend
-python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
+如果使用 `start.ps1` 启动，通常在对应终端按：
+
+```text
+Ctrl + C
 ```
 
-### 12.3 椤甸潰鏄剧ず鏆傛棤鏁版嵁
+如果手动启动了多个服务，请分别停止前端、后端和数据获取服务。
 
-寮€婧愬寘榛樿涓嶅甫鐪熷疄鏁版嵁锛岄渶瑕佸厛瀵煎叆婕旂ず鏁版嵁锛?
-```powershell
-cd backend
-python .\scripts\load_demo_day.py --date 2026-07-01
+## 10. 数据获取工具配置
+
+数据获取控制服务位于：
+
+```text
+gd-market-crawler
 ```
 
-### 12.4 鏀跨瓥 AI 鍔熻兘涓嶅彲鐢?
-妫€鏌ユ槸鍚﹂厤缃細
+开源版不会提交真实浏览器会话和本地登录信息。首次使用前需要自行配置：
 
-```env
-POLICY_LLM_API_KEY=
-POLICY_LLM_MODEL=
-```
+- 登录方式。
+- 下载目录。
+- 数据项选择。
+- 本地配置文件。
 
-鏈厤缃椂锛岀郴缁熶細浣跨敤瑙勫垯瑙ｆ瀽鎴栬繑鍥炴湭閰嶇疆鎻愮ず銆?
-### 12.5 鏁版嵁鑾峰彇鏈嶅姟鏈惎鍔?
-闇€瑕佸厛鍒涘缓锛?
+敏感配置建议放在本地文件，例如：
+
 ```text
 gd-market-crawler/config.local.json
 ```
 
-鏈垱寤烘椂鍚姩鑴氭湰浼氳烦杩囨暟鎹幏鍙栨帶鍒舵湇鍔°€?
-## 13. 鍙戝竷鍓嶆鏌?
-涓婁紶 GitHub 鍓嶅缓璁墽琛岋細
+该文件应保持在 `.gitignore` 中，不要提交到 GitHub。
+
+## 11. 页面功能检查建议
+
+启动后建议按以下顺序检查：
+
+1. 首页是否能正常打开。
+2. 顶部交易日选择是否可用。
+3. 基本面页面是否能读取演示数据或显示合理空态。
+4. 市场出清与分时电量页面是否能切换市场口径和日期。
+5. 网架拓扑页面是否能展示节点、线路和阻塞识别结果。
+6. 数据获取页面是否能连接本地数据获取服务。
+7. 导入管理页面是否能执行演示导入或显示导入状态。
+
+## 12. 常见问题
+
+### 端口被占用
+
+如果后端端口被占用，可更换端口：
 
 ```powershell
-rg --files | rg "(\.env$|config\.local\.json$|\.db$|\.sqlite$|\.xlsx$|\.csv$|\.log$|\.pkl$|node_modules|\.next|data_samples|downloads)"
-rg -n "<local-user-path>|<private-directory>|sk-[A-Za-z0-9_-]{20,}|Bearer\\s+[A-Za-z0-9._-]{20,}" .
+cd backend
+python -m uvicorn main:app --host 127.0.0.1 --port 8010 --reload
 ```
 
-濡傛灉鏈夌湡瀹炲瘑閽ユ浘缁忚繘鍏?Git 鍘嗗彶锛岄渶瑕佺珛鍗宠疆鎹㈠瘑閽ュ苟娓呯悊 Git 鍘嗗彶銆?
+同时需要确认前端 API 地址配置与后端端口一致。
+
+### 页面显示暂无数据
+
+这通常表示数据库中没有对应日期或对应数据项。请先导入演示数据，或检查后端数据库路径配置。
+
+### 终端出现 503
+
+如果请求类似：
+
+```text
+GET /api/trading/context?effective_date=2026-07-02 503
+```
+
+通常表示后端服务当前没有找到该交易日上下文，或数据库没有对应数据。它不是前端崩溃，但需要检查数据是否已经入库。
+
+### Markdown 中文乱码
+
+请确认 Markdown 文件使用 UTF-8 编码保存。不要用错误编码重新写入中文文档。
+
+## 13. 发布前检查
+
+上传 GitHub 前建议执行：
+
+```powershell
+git status --short
+rg -n "sk-[A-Za-z0-9_-]{20,}|Bearer\s+[A-Za-z0-9._-]{20,}|api[_-]?key|secret|password|cookie|ukey" .
+rg --files | rg "(\.env$|config\.local\.json$|\.db$|\.sqlite$|\.xlsx$|\.csv$|\.log$|\.pkl$|node_modules|\.next|downloads|browser-data)"
+```
+
+以下内容不应提交：
+
+```text
+.env
+*.db
+*.sqlite
+data_samples/
+uploads/
+outputs/
+gd-market-crawler/config.local.json
+gd-market-crawler/downloads/
+gd-market-crawler/browser-data/
+frontend/node_modules/
+frontend/.next/
+*.log
+*.pkl
+*.joblib
+```
+
+确认无敏感文件后再提交并推送。
