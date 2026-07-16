@@ -212,12 +212,6 @@ npm run dev
 
 ## 11. 安全边界
 
-上传 GitHub 前建议执行：
+发布开源版本前，应确认仓库中不包含真实业务数据、本地数据库、浏览器会话、日志、模型产物、账号配置和任何密钥信息。
 
-```powershell
-git status --short
-rg -n "sk-[A-Za-z0-9_-]{20,}|Bearer\s+[A-Za-z0-9._-]{20,}|api[_-]?key|secret|password|cookie|ukey" .
-rg --files | rg "(\.env$|config\.local\.json$|\.db$|\.sqlite$|\.xlsx$|\.csv$|\.log$|\.pkl$|node_modules|\.next|downloads|browser-data)"
-```
-
-确认没有敏感文件和本地私有数据后再提交。
+如需进行二次发布，建议在本地完成完整的敏感文件检查后再提交。

@@ -197,15 +197,7 @@ GET /api/trading/context?effective_date=2026-07-02 503
 
 ## 13. 发布前检查
 
-上传 GitHub 前建议执行：
-
-```powershell
-git status --short
-rg -n "sk-[A-Za-z0-9_-]{20,}|Bearer\s+[A-Za-z0-9._-]{20,}|api[_-]?key|secret|password|cookie|ukey" .
-rg --files | rg "(\.env$|config\.local\.json$|\.db$|\.sqlite$|\.xlsx$|\.csv$|\.log$|\.pkl$|node_modules|\.next|downloads|browser-data)"
-```
-
-以下内容不应提交：
+发布前请确认以下内容不应提交：
 
 ```text
 .env
