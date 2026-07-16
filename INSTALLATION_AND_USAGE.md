@@ -48,10 +48,10 @@ python -m pip install -r requirements.txt
 cd ..
 ```
 
-如果使用 Anaconda，可指定 Python 路径：
+如果使用 Anaconda 或其他独立 Python 环境，可指定对应的 Python 可执行文件路径：
 
 ```powershell
-& "C:\software\anaconda\python.exe" -m pip install -r backend\requirements.txt
+& "<path-to-python>\python.exe" -m pip install -r backend\requirements.txt
 ```
 
 ## 6. 安装前端依赖
